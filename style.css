@@ -1977,8 +1977,9 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    .modal-img {
-        min-height: 280px;
+    .modal-img-viewer {
+        aspect-ratio: 1/1;
+        min-height: auto;
     }
 
     .modal-details {
@@ -2016,5 +2017,114 @@ footer {
         bottom: 20px;
         right: 20px;
         left: 20px;
+    }
+}
+
+/* ── SMALL MOBILE (max-width: 600px) ────────────── */
+@media (max-width: 600px) {
+
+    .product-grid,
+    .arrivals-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .product-name {
+        font-size: 13px;
+    }
+
+    .product-price,
+    .product-sub {
+        font-size: 11px;
+    }
+
+    .arrival-name {
+        font-size: 13px;
+    }
+
+    .arrival-price {
+        font-size: 11px;
+    }
+
+    .arrival-img {
+        font-size: 40px;
+        min-height: 160px;
+    }
+
+    .arrival-card.big .arrival-img {
+        min-height: 200px;
+        font-size: 60px;
+    }
+
+    .hero-title {
+        font-size: 18vw;
+    }
+
+    .hero-title .sub {
+        font-size: 5.5vw;
+    }
+
+    .hero-eyebrow {
+        font-size: 11px;
+    }
+
+    .slide-name {
+        font-size: 20px;
+        text-shadow: 0 1px 12px rgba(0, 0, 0, 0.8);
+    }
+
+    .slide-label {
+        bottom: 40px;
+        left: 16px;
+    }
+
+    .slider-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+    }
+
+    .slider-prev {
+        left: 8px;
+    }
+
+    .slider-next {
+        right: 8px;
+    }
+
+    .modal-img-viewer {
+        aspect-ratio: 1/1;
+    }
+
+    .modal-details {
+        padding: 20px 16px;
+    }
+
+    .modal-name {
+        font-size: 26px;
+        margin-bottom: 8px;
+    }
+
+    .modal-price {
+        font-size: 18px;
+        margin-bottom: 16px;
+    }
+
+    .modal-desc {
+        margin-bottom: 20px;
+        padding: 12px 0;
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        text-align: center;
+    }
+
+    .about-title {
+        font-size: 12vw;
+    }
+
+    .about-glitch {
+        font-size: 24vw;
     }
 }
