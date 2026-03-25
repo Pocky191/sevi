@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kbg.clo — Built Different</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Non-blocking font load: preload then swap in via onload -->
+    <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap">
+    </noscript>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- CUSTOM CURSOR -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+
+    <!-- PAGE LOADER -->
+    <div class="loader" id="loader">
+        <div class="loader-inner">
+            <div class="loader-logo">kbg.clo</div>
+            <div class="loader-bar">
+                <div class="loader-fill" id="loaderFill"></div>
+            </div>
+            <p class="loader-text" id="loaderText">Loading Collection...</p>
+        </div>
+    </div>
+
+    <!-- NAV -->
+    <nav id="navbar">
+        <a href="#" class="nav-logo" onclick="showHome()">kbg.clo</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#" onclick="showHome()">Home</a></li>
+            <li><a href="#featured">Shop</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#footer">Contact</a></li>
+        </ul>
+        <button class="nav-cart" onclick="toggleCart()">
+            Cart <span class="cart-badge" id="cartBadge">0</span>
+        </button>
+        <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- HOME CONTENT -->
+    <div id="homeContent">
+
+        <!-- HERO -->
+        <section id="hero">
+            <div class="hero-left">
+                <p class="hero-eyebrow reveal-item">// SS 2026 Collection</p>
+                <h1 class="hero-title">
+                    <span class="reveal-item" style="animation-delay:.1s">ANG</span>
+                    <span class="reveal-item" style="animation-delay:.2s">DAMIT</span>
+                    <span class="sub reveal-item" style="animation-delay:.3s">— NG MGA POGI</span>
+                </h1>
+                <p class="hero-tagline reveal-item" style="animation-delay:.4s">Premium streetwear engineered for those
+                    who move on their own terms. No rules. No compromises.</p>
+                <div class="hero-cta reveal-item" style="animation-delay:.5s">
+                    <a href="#featured" class="btn-primary">Shop Now</a>
+                    <a href="#arrivals" class="btn-outline">New Arrivals</a>
+                </div>
+            </div>
+            <div class="hero-right">
+                <!-- IMAGE SLIDER -->
+                <div class="hero-slider" id="heroSlider">
+                    <div class="hero-slide active" style="background-image:url('images/6206293774007209857.jpg')">
+                        <div class="slide-overlay"></div>
+                        <div class="slide-label">
+                            <span class="slide-tag">SS 2026</span>
+                            <span class="slide-name">KBG Classic Hoodie</span>
+                        </div>
+                    </div>
+                    <div class="hero-slide" style="background-image:url('images/6206293774007209858.jpg')">
+                        <div class="slide-overlay"></div>
+                        <div class="slide-label">
+                            <span class="slide-tag">FEATURED</span>
+                            <span class="slide-name">Void Tee — Relaxed Fit</span>
+                        </div>
+                    </div>
+                    <div class="hero-slide" style="background-image:url('images/6206293774007209862.jpg')">
+                        <div class="slide-overlay"></div>
+                        <div class="slide-label">
+                            <span class="slide-tag">NEW DROP</span>
+                            <span class="slide-name">Monogram Crewneck</span>
+                        </div>
+                    </div>
+
+
+                    <!-- Controls -->
+                    <button class="slider-btn slider-prev" onclick="heroSlide(-1)"
+                        aria-label="Previous slide">&#8592;</button>
+                    <button class="slider-btn slider-next" onclick="heroSlide(1)"
+                        aria-label="Next slide">&#8594;</button>
+
+                    <!-- Dots -->
+                    <div class="slider-dots">
+                        <button class="slider-dot active" onclick="heroGoTo(0)"></button>
+                        <button class="slider-dot" onclick="heroGoTo(1)"></button>
+                        <button class="slider-dot" onclick="heroGoTo(2)"></button>
+                    </div>
+
+                    <!-- Progress bar -->
+                    <div class="slider-progress">
+                        <div class="slider-progress-fill" id="sliderProgress"></div>
+                    </div>
+                </div>
+
+                <div class="hero-badge">NEW<br>DROP<br>2026</div>
+            </div>
+        </section>
+
+        <!-- MARQUEE -->
+        <div class="marquee-strip">
+            <div class="marquee-inner">
+                &nbsp;KBG.CLO &nbsp;— &nbsp;BUILT DIFFERENT &nbsp;— &nbsp;STREETWEAR &nbsp;— &nbsp;MANILA &nbsp;—
+                &nbsp;KBG.CLO &nbsp;— &nbsp;BUILT DIFFERENT &nbsp;— &nbsp;STREETWEAR &nbsp;— &nbsp;MANILA &nbsp;—
+                &nbsp;KBG.CLO &nbsp;— &nbsp;BUILT DIFFERENT &nbsp;— &nbsp;STREETWEAR &nbsp;— &nbsp;MANILA &nbsp;—
+                &nbsp;KBG.CLO &nbsp;— &nbsp;BUILT DIFFERENT &nbsp;— &nbsp;STREETWEAR &nbsp;— &nbsp;MANILA &nbsp;—&nbsp;
+            </div>
+        </div>
+
+        <!-- FEATURED -->
+        <section id="featured">
+            <div class="section-header">
+                <h2 class="section-title scroll-reveal">Featured</h2>
+                <span class="section-count">06 PIECES</span>
+            </div>
+            <div class="product-grid">
+                <div class="product-card scroll-reveal"
+                    onclick="openProduct('KBG Greenman','Mock Neck','₱1,850','A heavyweight French terry Shirt with an oversized silhouette. Drop-shoulder cut, kangaroo pocket, and ribbed cuffs.', 'images/A.GRE.jpg', 'images/B.GRE.jpg')">
+                    <div class="product-img-wrap">
+                        <img src="images\A.GRE.jpg" alt="KBG Classic Hoodie" class="product-img">
+                        <div class="product-img-placeholder">KBG</div>
+                        <div class="product-overlay">Quick View</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">KBG Greenman</div>
+                        <div class="product-sub">ProClub — Oversized</div>
+                        <div class="product-price">₱1,850</div>
+                    </div>
+                    <div class="product-tag">BESTSELLER</div>
+                </div>
+                <div class="product-card scroll-reveal" style="animation-delay:.1s"
+                    onclick="openProduct('Void Tee','T-Shirts','₱890','Ultra-soft 240gsm cotton tee. Relaxed fit, dropped shoulders, and screen-printed KBG chest logo in reflective ink.', 'images/A.bROWN.jpg', 'images/B.BROWN.jpg')">
+                    <div class="product-img-wrap">
+                        <img src="images\A.bROWN.jpg" alt="KBG Classic Hoodie" class="product-img">
+                        <div class="product-img-placeholder">TEE</div>
+                        <div class="product-overlay">Quick View</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Void Tee</div>
+                        <div class="product-sub">T-Shirts — Relaxed</div>
+                        <div class="product-price">₱890</div>
+                    </div>
+                </div>
+                <div class="product-card scroll-reveal" style="animation-delay:.2s"
+                    onclick="openProduct('KBG Metallic','Regular Fit','₱650','6-panel structured snapback with embroidered kbg.clo logo. One size fits all. Adjustable snap closure.', 'images/BLDS.jpg', 'images/SDFSD.jpg')">
+                    <div class="product-img-wrap">
+                        <img src="images\BLDS.jpg" alt="KBG Classic Hoodie" class="product-img">
+                        <div class="product-img-placeholder">Regular Fit</div>
+                        <div class="product-overlay">Quick View</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">KBG Metallic</div>
+                        <div class="product-sub">Regular Fit — One Size</div>\
+                        <div class="product-price">₱650</div>
+                    </div>
+                    <div class="product-tag">NEW</div>
+                </div>
+                <div class="product-card scroll-reveal" style="animation-delay:.3s"
+                    onclick="openProduct('KBG Classic','Mock Neck','₱2,100','Technical ripstop cargo pants with multiple utility pockets. Adjustable drawcord waist. Street-ready silhouette.', 'images/bLUEb.jpg', 'images/blueF.jpg')">
+                    <div class="product-img-wrap">
+                        <img src="images\bLUEb.jpg" alt="KBG Classic Hoodie" class="product-img">
+                        <div class="product-img-placeholder">CGO</div>
+                        <div class="product-overlay">Quick View</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">KBG Classic</div>
+                        <div class="product-sub">Mock Neck — Tapered</div>
+                        <div class="product-price">₱2,100</div>
+                    </div>
+                </div>
+                <div class="product-card scroll-reveal" style="animation-delay:.4s"
+                    onclick="openProduct('Monogram Crewneck','Sweatshirts','₱1,450','Midweight fleece crewneck. All-over KBG monogram jacquard weave. Boxy fit, ribbed hem and cuffs.', 'images/SDFSDF-Recovered.jpg', 'images/Dblue.jpg')">
+                    <div class="product-img-wrap">
+                        <img src="images\SDFSDF-Recovered.jpg" alt="KBG Classic Hoodie" class="product-img">
+                        <div class="product-img-placeholder">CRW</div>
+                        <div class="product-overlay">Quick View</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Monogram Crewneck</div>
+                        <div class="product-sub">Sweatshirts — Boxy</div>
+                        <div class="product-price">₱1,450</div>
+                    </div>
+                    <div class="product-tag">LIMITED</div>
+                </div>
+                <div class="product-card scroll-reveal" style="animation-delay:.5s"
+                    onclick="openProduct('Mang Torni','T-Shirts','₱1,050','Heavyweight 280gsm cotton long-sleeve. Faded KBG back graphic. Double-needle stitching throughout.', 'images/Torni.jpg', 'images/SDFSD.jpg')">
+                    <div class="product-img-wrap">
+                        <img src="images\Torni.jpg" alt="KBG Classic Hoodie" class="product-img">
+                        <div class="product-img-placeholder">LS</div>
+                        <div class="product-overlay">Quick View</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Mang Torni</div>
+                        <div class="product-sub">T-Shirts — Oversized</div>
+                        <div class="product-price">₱1,050</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW ARRIVALS -->
+        <section id="arrivals">
+            <div class="section-header">
+                <h2 class="section-title scroll-reveal">New Arrivals</h2>
+                <span class="section-count">DROP 01 / 2026</span>
+            </div>
+            <div class="arrivals-grid">
+                <div class="arrival-card big scroll-reveal"
+                    onclick="openProduct('Archive Parka','Outerwear','₱4,200','A full-length parka with KBG woven label. Oversized fit, hidden zip closure, utility pockets. Our heaviest drop yet.', 'images/hood.jpg', 'images/hood.jpg')">
+                    <div class="arrival-img">
+                        <img src="images/hood.jpg" alt="Archive Parka" class="product-img">
+                        PARKA
+                    </div>
+                    <div class="arrival-info">
+                        <div class="arrival-name">Archive Parka</div>
+                        <div class="arrival-price">₱4,200 — Outerwear</div>
+                    </div>
+                </div>
+                <div class="arrival-card scroll-reveal" style="animation-delay:.1s"
+                    onclick="openProduct('Signal Bucket Hat','Accessories','₱720','Unstructured canvas bucket hat. All-over KBG print. Wide brim. Available in black and sand.', 'images/cap.jpg', 'images/cap.jpg')">
+                    <div class="arrival-img">
+                        <img src="images/cap.jpg" alt="Signal Bucket Hat" class="product-img">
+                        BKT
+                    </div>
+                    <div class="arrival-info">
+                        <div class="arrival-name">Signal Bucket Hat</div>
+                        <div class="arrival-price">₱720</div>
+                    </div>
+                </div>
+                <div class="arrival-card scroll-reveal" style="animation-delay:.2s"
+                    onclick="openProduct('KBG Waist Bag','Accessories','₱950','Minimal nylon waist bag with front zip pocket. KBG rubber patch logo. Adjustable strap.', 'images/jack.jpg', 'images/jack.jpg')">
+                    <div class="arrival-img">
+                        <img src="images/jack.jpg" alt="KBG Waist Bag" class="product-img">
+                        BAG
+                    </div>
+                    <div class="arrival-info">
+                        <div class="arrival-name">KBG Waist Bag</div>
+                        <div class="arrival-price">₱950</div>
+                    </div>
+                </div>
+                <div class="arrival-card scroll-reveal" style="animation-delay:.1s"
+                    onclick="openProduct('Thermal Fleece','Sweatshirts','₱1,650','Polar fleece half-zip with KBG chenille patch. Loose silhouette. Warm-toned colorway.', 'images/bag.jpg', 'images/bag.jpg')">
+                    <div class="arrival-img">
+                        <img src="images/bag.jpg" alt="Thermal Fleece" class="product-img">
+                        FLCE
+                    </div>
+                    <div class="arrival-info">
+                        <div class="arrival-name">Thermal Fleece</div>
+                        <div class="arrival-price">₱1,650</div>
+                    </div>
+                </div>
+                <div class="arrival-card scroll-reveal" style="animation-delay:.2s"
+                    onclick="openProduct('Draft Shorts','Bottoms','₱980','Mesh basketball shorts with KBG embroidered logo. Elastic drawstring waist. Mid-thigh length.', 'images/short.jpg', 'images/short.jpg')">
+                    <div class="arrival-img">
+                        <img src="images/short.jpg" alt="Draft Shorts" class="product-img">
+                        SHRT
+                    </div>
+                    <div class="arrival-info">
+                        <div class="arrival-name">Draft Shorts</div>
+                        <div class="arrival-price">₱980</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about" class="about-section">
+            <div class="about-inner scroll-reveal">
+                <p class="about-eyebrow">About kbg.clo</p>
+                <h2 class="about-title">BUILT FOR THOSE WHO MOVE DIFFERENT</h2>
+                <p class="about-body">kbg.clo was born from the streets of Manila. We make clothing for people who don't
+                    follow trends — they set them. Every piece is designed with intention, crafted for comfort, and
+                    built to last.</p>
+                <a href="#featured" class="btn-primary">Shop the Collection</a>
+            </div>
+            <div class="about-glitch" aria-hidden="true" data-text="KBG">KBG</div>
+        </section>
+
+    </div><!-- /#homeContent -->
+
+    <!-- CHECKOUT -->
+    <div id="checkout">
+        <div class="checkout-wrap">
+            <h1 class="checkout-title">Checkout</h1>
+            <div class="checkout-grid">
+                <div>
+                    <div class="form-section">
+                        <h3 class="form-section-title">Contact Information</h3>
+                        <div class="form-row">
+                            <input class="form-input" type="text" placeholder="First Name">
+                            <input class="form-input" type="text" placeholder="Last Name">
+                        </div>
+                        <div class="form-row full"><input class="form-input" type="email" placeholder="Email Address">
+                        </div>
+                        <div class="form-row full"><input class="form-input" type="tel" placeholder="Phone Number">
+                        </div>
+                    </div>
+                    <div class="form-section">
+                        <h3 class="form-section-title">Shipping Address</h3>
+                        <div class="form-row full"><input class="form-input" type="text" placeholder="Street Address">
+                        </div>
+                        <div class="form-row">
+                            <input class="form-input" type="text" placeholder="City">
+                            <input class="form-input" type="text" placeholder="Province">
+                        </div>
+                        <div class="form-row">
+                            <input class="form-input" type="text" placeholder="ZIP Code">
+                            <input class="form-input" type="text" placeholder="Country" value="Philippines">
+                        </div>
+                    </div>
+                    <div class="form-section">
+                        <h3 class="form-section-title">Payment Method</h3>
+                        <div class="payment-options">
+                            <label class="payment-opt selected" onclick="selectPayment(this)">
+                                <input type="radio" name="pay" checked>
+                                <div>
+                                    <div class="payment-opt-label">GCash</div>
+                                    <div class="payment-opt-sub">Pay via GCash mobile wallet</div>
+                                </div>
+                            </label>
+                            <label class="payment-opt" onclick="selectPayment(this)">
+                                <input type="radio" name="pay">
+                                <div>
+                                    <div class="payment-opt-label">Cash on Delivery</div>
+                                    <div class="payment-opt-sub">Pay when your order arrives</div>
+                                </div>
+                            </label>
+                            <label class="payment-opt" onclick="selectPayment(this)">
+                                <input type="radio" name="pay">
+                                <div>
+                                    <div class="payment-opt-label">Online Banking</div>
+                                    <div class="payment-opt-sub">BPI, BDO, Metrobank & more</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <button class="add-cart-btn" onclick="placeOrder()">Place Order</button>
+                    <p class="shipping-note">FREE SHIPPING ON ORDERS OVER ₱2,500</p>
+                </div>
+                <div>
+                    <div class="order-summary-panel">
+                        <h3 class="summary-title">Order Summary</h3>
+                        <div id="summaryItems"></div>
+                        <div class="summary-total"><span>Total</span><span id="summaryTotal">₱0</span></div>
+                        <div class="summary-meta">
+                            <p>Shipping: <strong>₱150</strong></p>
+                            <p>Estimated delivery: <strong>3–5 days</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        <div class="footer-top">
+            <div>
+                <div class="footer-logo">kbg.clo</div>
+                <p class="footer-desc">Premium streetwear from Manila. Built different for those who move different.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">IG</a>
+                    <a href="#" class="social-link">FB</a>
+                    <a href="#" class="social-link">TK</a>
+                    <a href="#" class="social-link">TW</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Shop</h4>
+                <ul>
+                    <li>Hoodies</li>
+                    <li>T-Shirts</li>
+                    <li>Caps</li>
+                    <li>Bottoms</li>
+                    <li>Accessories</li>
+                    <li>New Arrivals</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Help</h4>
+                <ul>
+                    <li>Size Guide</li>
+                    <li>Shipping Info</li>
+                    <li>Returns</li>
+                    <li>Track Order</li>
+                    <li>FAQ</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li>hello@kbg.clo</li>
+                    <li>+63 917 000 0000</li>
+                    <li>Manila, PH</li>
+                    <li class="footer-hours">Mon–Fri 9AM–6PM</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 KBG — ALL RIGHTS RESERVED</span>
+            <span>PRIVACY POLICY &nbsp;·&nbsp; TERMS OF SERVICE</span>
+        </div>
+    </footer>
+
+    <!-- PRODUCT MODAL -->
+    <div class="modal-overlay" id="productModal" onclick="closeModalOutside(event)">
+        <button class="modal-close" onclick="closeModal()">×</button>
+        <div class="modal">
+            <!-- MODAL IMAGE VIEWER (front/back slider) -->
+            <div class="modal-img-viewer" id="modalImgViewer">
+                <div class="modal-img-slide active" id="modalImgFront">
+                    <span class="modal-img-letter" id="modalImgLetterFront">KBG</span>
+                    <span class="modal-view-tag">FRONT</span>
+                </div>
+                <div class="modal-img-slide" id="modalImgBack">
+                    <span class="modal-img-letter" id="modalImgLetterBack">KBG</span>
+                    <span class="modal-view-tag">BACK</span>
+                </div>
+                <button class="modal-slide-btn modal-slide-prev" onclick="modalImgSlide(-1)"
+                    aria-label="Previous">&#8592;</button>
+                <button class="modal-slide-btn modal-slide-next" onclick="modalImgSlide(1)"
+                    aria-label="Next">&#8594;</button>
+                <div class="modal-slide-dots">
+                    <button class="modal-slide-dot active" onclick="modalImgGoTo(0)"></button>
+                    <button class="modal-slide-dot" onclick="modalImgGoTo(1)"></button>
+                </div>
+            </div>
+            <div class="modal-details">
+                <p class="modal-category" id="modalCat">Hoodies</p>
+                <h2 class="modal-name" id="modalName">KBG Classic Hoodie</h2>
+                <div class="ratings"><span class="stars">★★★★★</span><span class="rating-count">(47 reviews)</span>
+                </div>
+                <p class="modal-price" id="modalPrice">₱1,850</p>
+                <p class="modal-desc" id="modalDesc">A heavyweight French terry hoodie.</p>
+                <span class="size-label">Select Size</span>
+                <div class="size-options">
+                    <button class="size-btn" onclick="selectSize(this)">S</button>
+                    <button class="size-btn active" onclick="selectSize(this)">M</button>
+                    <button class="size-btn" onclick="selectSize(this)">L</button>
+                    <button class="size-btn" onclick="selectSize(this)">XL</button>
+                </div>
+                <button class="add-cart-btn" onclick="addToCart()">Add to Cart</button>
+                <button class="btn-outline modal-continue" onclick="closeModal()">Continue Shopping</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CART DRAWER -->
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h2 class="cart-title">Your Cart</h2>
+            <button class="cart-close" onclick="toggleCart()">×</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p class="cart-empty">YOUR CART IS EMPTY</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total"><span>Subtotal</span><span id="cartTotal">₱0</span></div>
+            <button class="add-cart-btn" onclick="goToCheckout()">Proceed to Checkout</button>
+            <p class="shipping-note">FREE SHIPPING OVER ₱2,500</p>
+        </div>
+    </div>
+
+    <!-- TOAST -->
+    <div class="toast" id="toast">Added to cart</div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
